@@ -1,0 +1,38 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net6.0</TargetFramework>
+    <LangVersion>latest</LangVersion>
+    <AssemblyName>MichaelJacksonRole</AssemblyName>
+    <RootNamespace>MichaelJacksonRole</RootNamespace>
+    <Version>0.1.0</Version>
+    <Description>Adds the "Michael Jackson" Impostor role to Among Us.</Description>
+    <DebugType>embedded</DebugType>
+    <ImplicitUsings>disable</ImplicitUsings>
+
+    <!-- Bump these to match the Among Us build you are targeting. -->
+    <GameLibsVersion Condition="'$(GameLibsVersion)' == ''">2024.10.29</GameLibsVersion>
+    <BepInExVersion Condition="'$(BepInExVersion)' == ''">6.0.0-be.735</BepInExVersion>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="BepInEx.Unity.IL2CPP" Version="$(BepInExVersion)" PrivateAssets="all" />
+    <PackageReference Include="AmongUs.GameLibs.Steam" Version="$(GameLibsVersion)" PrivateAssets="all" />
+    <!-- Generates the IL2CPP interop assemblies (UnityEngine, Assembly-CSharp, Hazel...) from GameLibs at build time. -->
+    <PackageReference Include="BepInEx.IL2CPP.MSBuild" Version="2.1.0-rc.1" PrivateAssets="all" ExcludeAssets="runtime" />
+  </ItemGroup>
+
+  <!--
+    Optional: set the AmongUs environment variable (or pass -p:AmongUs="C:\path\to\Among Us")
+    to copy the built plugin straight into your game folder after every build.
+  -->
+  <Target Name="CopyToGame" AfterTargets="Build" Condition="'$(AmongUs)' != ''">
+    <PropertyGroup>
+      <PluginDir>$(AmongUs)/BepInEx/plugins/MichaelJacksonRole</PluginDir>
+    </PropertyGroup>
+    <MakeDir Directories="$(PluginDir)/Sounds" />
+    <Copy SourceFiles="$(TargetPath)" DestinationFolder="$(PluginDir)" />
+    <Message Importance="high" Text="Copied $(TargetFileName) to $(PluginDir)" />
+  </Target>
+
+</Project>

@@ -1,0 +1,9 @@
+bin/
+obj/
+.vs/
+.idea/
+*.user
+*.suo
+
+# Never commit audio you do not own the rights to.
+Sounds/*.wav
