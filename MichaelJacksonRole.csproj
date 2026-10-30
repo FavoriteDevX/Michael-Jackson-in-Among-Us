@@ -18,6 +18,8 @@
   <ItemGroup>
     <PackageReference Include="BepInEx.Unity.IL2CPP" Version="$(BepInExVersion)" PrivateAssets="all" />
     <PackageReference Include="AmongUs.GameLibs.Steam" Version="$(GameLibsVersion)" PrivateAssets="all" />
+    <!-- Generates the IL2CPP interop assemblies (UnityEngine, Assembly-CSharp, Hazel...) from GameLibs at build time. -->
+    <PackageReference Include="BepInEx.IL2CPP.MSBuild" Version="2.1.0-rc.1" PrivateAssets="all" ExcludeAssets="runtime" />
   </ItemGroup>
 
   <!--
