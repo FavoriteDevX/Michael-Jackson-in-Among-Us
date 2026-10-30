@@ -1,7 +1,7 @@
 # Michael Jackson in Among Us
 
 <p align="center">
-  <img src="docs/images/cover-art.jpg" alt="Crewmate dressed in a white fedora and suit, leaning on a microphone stand" width="640">
+  <img src="docs/images/cover-art.webp" alt="Crewmate dressed in a white fedora and suit, leaning on a microphone stand" width="640">
 </p>
 <p align="center">
   <img src="docs/images/cover-gameplay.png" alt="In-game screenshot of the Michael Jackson player wearing a black fedora" width="480">
