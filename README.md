@@ -23,6 +23,7 @@
 - [Adding the sound files](#adding-the-sound-files)
 - [Configuration](#configuration)
 - [Building from source](#building-from-source)
+- [Publishing a release](#publishing-a-release)
 - [Project structure](#project-structure)
 - [How it works](#how-it-works)
 - [Known limitations](#known-limitations)
@@ -67,8 +68,9 @@ Moonwalk can't be used while dead, inside a vent, or during meetings and ejectio
    3. Start the game once and close it. BepInEx creates its folders on the first run (it can take a minute).
 
 2. **Install the mod**
-   1. Download `MichaelJacksonRole.dll` from the [Releases](../../releases) page, or [build it yourself](#building-from-source).
-   2. Create the folder `BepInEx/plugins/MichaelJacksonRole/` and put the DLL inside it.
+   1. Download `MichaelJacksonRole-<version>.zip` from the [Releases](../../releases) page.
+   2. Extract it into your Among Us folder. It already contains `BepInEx/plugins/MichaelJacksonRole/` with the DLL and an empty `Sounds` folder.
+   3. Prefer building it yourself? See [Building from source](#building-from-source) and put the DLL in `BepInEx/plugins/MichaelJacksonRole/`.
 
 3. **Add the sound files**: see the next section.
 
@@ -169,6 +171,20 @@ dotnet build -c Release -p:AmongUs="C:/Program Files (x86)/Steam/steamapps/commo
 ```bash
 dotnet build -c Release -p:GameLibsVersion=<game-version>
 ```
+
+## Publishing a release
+
+Pushing a tag that starts with `v` runs `.github/workflows/release.yml`, which builds the plugin and creates a GitHub Release with the zip and the DLL attached:
+
+```bash
+git tag v0.1.0
+```
+
+```bash
+git push origin v0.1.0
+```
+
+Keep `Version` in `src/Plugin.cs` and `MichaelJacksonRole.csproj` in sync with the tag.
 
 ## Project structure
 
